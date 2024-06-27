@@ -2,6 +2,8 @@
 """
 interview prep: pascal triangle
 """
+
+
 def pascal_triangle(n):
     """
     :type numRows: int
