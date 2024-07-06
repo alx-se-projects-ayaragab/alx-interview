@@ -2,6 +2,8 @@
 """
 0. Lockboxes interview question
 """
+
+
 def canUnlockAll(boxes):
     n = len(boxes)
     b_states = [False] * n
