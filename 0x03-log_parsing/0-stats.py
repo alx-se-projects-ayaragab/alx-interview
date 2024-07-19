@@ -20,6 +20,7 @@ try:
                 continue
             line_splitted = line.split(' ')
             state_codes[int(line_splitted[-2])] += 1
+            sorted(state_codes)
             lines.append(line_splitted)
             count += 1
             if count == 10:
