@@ -7,8 +7,10 @@ import re
 
 count = 0
 lines = []
-state_codes = {200:0, 301:0, 400:0, 401:0, 403:0, 404:0, 405:0, 500:0}
-log_pattern = '^(\d{1,3}\.){3}\d{1,3} - \[\d{4}-\d{2}-\d{2}\] "GET /projects/260 HTTP/1\.1" (200|301|400|401|403|404|405|500) \d{1,4}$'
+state_codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
+log_pattern = '^(\\d{1,3}\\.){3}\\d{1,3} - \\[\\d{4}-\\d{2}-\\d{2}\\] ' + \
+              '"GET /projects/260 HTTP/1\\.1"' + \
+              ' (200|301|400|401|403|404|405|500) \\d{1,4}$'
 
 try:
     while True:
@@ -25,23 +27,23 @@ try:
                 raise KeyboardInterrupt
         except KeyboardInterrupt:
             print("Log parsing results:")
-            for l in lines:
-                print(f'File size: {l[-1]}')
+            for line in lines:
+                print(f'File size: {line[-1]}')
             for k, v in state_codes.items():
                 if v != 0:
                     print(f'{k}: {v}')
             lines.clear()
 except KeyboardInterrupt or EOFError:
     if lines:
-        for l in lines:
-            print(f'File size: {l[-1]}')
+        for line_ in lines:
+            print(f'File size: {line_[-1]}')
         for k, v in state_codes.items():
             if v != 0:
                 print(f'{k}: {v}')
 
 if lines:
-    for l in lines:
-        print(f'File size: {l[-1]}')
+    for line__ in lines:
+        print(f'File size: {line__[-1]}')
     for k, v in state_codes.items():
         if v != 0:
             print(f'{k}: {v}')
