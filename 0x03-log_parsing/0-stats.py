@@ -31,7 +31,7 @@ if __name__ == '__main__':
                 if code in state_codes:
                     state_codes[code] += 1
             except BaseException:
-                pass 
+                pass
             try:
                 filesize += int(splitted[-1])
             except BaseException:
