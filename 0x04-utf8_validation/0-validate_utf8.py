@@ -10,7 +10,7 @@ def validUTF8(data):
         return True
     intsInBin = []
     for num in data:
-        if num in range(1, 255):
+        if num in range(1, 256):
             intsInBin.append('{0:08b}'.format(num))
         else:
             return False
