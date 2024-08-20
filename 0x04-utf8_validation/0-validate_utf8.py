@@ -34,4 +34,5 @@ def validUTF8(data):
             i += 1
             if i >= n or not intsInBin[i].startswith('10'):
                 return False
+        i += 1
     return True
