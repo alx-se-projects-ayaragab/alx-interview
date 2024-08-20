@@ -8,37 +8,31 @@
 def validUTF8(data):
     if not data:
         return True
-
     intsInBin = []
     for num in data:
-        if 0 <= num <= 255:  # Valid range of a byte
+        if 255 >= num >= 0:
             intsInBin.append('{0:08b}'.format(num))
         else:
             return False
-
     n = len(intsInBin)
     i = 0
-    expected_continuation_bytes = 0
-
+    continuation_bytes = 0
     while i < n:
         byte = intsInBin[i]
-        if expected_continuation_bytes > 0:
-            if byte.startswith('10'):
-                expected_continuation_bytes -= 1
-            else:
-                return False  # Expected continuation byte but didn't get one
+        if byte.startswith('0'):
+            i += 1
+            continue
+        elif byte.startswith('110'):
+            continuation_bytes = 1
+        elif byte.startswith('1110'):
+            continuation_bytes = 2
+        elif byte.startswith('11110'):
+            continuation_bytes = 3
         else:
-            if byte.startswith('0'):  # 1-byte character
-                pass
-            elif byte.startswith('110'):  # 2-byte character
-                expected_continuation_bytes = 1
-            elif byte.startswith('1110'):  # 3-byte character
-                expected_continuation_bytes = 2
-            elif byte.startswith('11110'):  # 4-byte character
-                expected_continuation_bytes = 3
-            else:
-                return False  # Invalid start byte for a multi-byte character
-
+            return False
+        for _ in range(continuation_bytes):
+            i += 1
+            if i >= n or not intsInBin[i].startswith('10'):
+                return False
         i += 1
-
-    return expected_continuation_bytes == 0  # Check if all continuation bytes were found
+    return True
