@@ -6,6 +6,8 @@
 
 
 def validUTF8(data):
+    if not data:
+        return False
     intsInBin = []
     for num in data:
         if num in range(1, 255):
