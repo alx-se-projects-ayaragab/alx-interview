@@ -10,7 +10,7 @@ def validUTF8(data):
         return True
     intsInBin = []
     for num in data:
-        if num in range(1, 256):
+        if num in range(0, 256):
             intsInBin.append('{0:08b}'.format(num))
         else:
             return False
@@ -27,10 +27,14 @@ def validUTF8(data):
                     return False
                 else:
                     l = len(s) - 1
+                    c = l
                     for _ in range(l):
                         if i + 1 < n and intsInBin[i + 1].startswith('10'):
                             i += 1
+                            c -= 1
                             continue
                         else:
                             return False
+                    if c != 0:
+                        return False
     return True
