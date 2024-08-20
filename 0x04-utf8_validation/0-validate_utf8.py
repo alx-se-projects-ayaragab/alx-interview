@@ -12,7 +12,7 @@ def validUTF8(data):
             intsInBin.append('{0:08b}'.format(num))
         else:
             return False
-    startsWith = ['0', '110', '1110', '11110']
+    startsWith = ['0', '110', '1110', '11110', '10']
     n = len(intsInBin)
     i = 0
     for bnum in intsInBin:
@@ -21,6 +21,8 @@ def validUTF8(data):
                 if s == '0':
                     i += 1
                     continue
+                elif s == '10':
+                    return False
                 else:
                     l = len(s) - 1
                     for _ in range(l):
