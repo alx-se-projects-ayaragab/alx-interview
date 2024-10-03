@@ -5,6 +5,9 @@ prime game
 
 
 def isWinner(x, nums):
+    """
+    isWinner
+    """
     def SieveOfEratosthenes(n):
         """
         Sieve of Eratosthenes
