@@ -1,3 +1,25 @@
+#!/usr/bin/python3
+"""
+prime game
+"""
+
+
+def SieveOfEratosthenes(n):
+    """
+    Sieve of Eratosthenes
+    algorithm
+    """
+    primes = [True] * (n + 1)
+    primes[0] = primes[1] = False
+    p = 2
+    while (p * p <= n):
+        if primes[p]:
+            for i in range(p * p, n + 1, p):
+                primes[i] = False
+        p += 1
+    return primes
+
+
 def isWinner(x, nums):
     if x == 0 or not nums:
         return None
