@@ -21,6 +21,9 @@ def SieveOfEratosthenes(n):
 
 
 def isWinner(x, nums):
+    """
+    doc
+    """
     if x == 0 or not nums:
         return None
 
