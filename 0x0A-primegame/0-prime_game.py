@@ -19,6 +19,7 @@ def SieveOfEratosthenes(n):
         p += 1
     return primes
 
+
 def isWinner(x, nums):
     """
     isWinner
