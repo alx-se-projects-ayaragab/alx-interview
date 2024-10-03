@@ -9,8 +9,6 @@ def SieveOfEratosthenes(n):
     Sieve of Eratosthenes
     algorithm
     """
-    if n < 2:
-        return 'Ben'
     primes = [True] * (n + 1)
     primes[0] = primes[1] = False
     p = 2
