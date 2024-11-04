@@ -1,4 +1,6 @@
 # alx-interview
+A repository of coding challenges and algorithmic problem solutions, designed to prepare for technical interviews with a focus on data structures, algorithms, and problem-solving skills.
+
 ## Tasks
 
 | Problem | Folder |
